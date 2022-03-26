@@ -18,4 +18,15 @@ namespace Fullogs {
 	static void fatal() {
 		
 	}
+	
+	// API for getting logs
+	static void getAllLogs() {
+		
+	}
+	static void getNewLogs() {
+		
+	}
+	static void getLastNLogs() {
+		
+	}
 }
