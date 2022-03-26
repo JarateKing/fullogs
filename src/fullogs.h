@@ -2,6 +2,14 @@
 #include <vector>
 
 namespace Fullogs {
+	// levels
+	const int LOG = 1;
+	const int DEBUG = 2;
+	const int ALERT = 4;
+	const int WARN = 8;
+	const int ERROR = 16;
+	const int FATAL = 32;
+	
 	// structs
 	struct LogItem {
 		int level;
