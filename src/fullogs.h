@@ -13,7 +13,7 @@ namespace Fullogs {
 	// structs
 	struct LogItem {
 		int level;
-		string message;
+		std::string message;
 	};
 	
 	struct LogItemsResult {
@@ -21,30 +21,30 @@ namespace Fullogs {
 		
 		void printToStdout() {
 			for (int i = 0; i < items.size(); i++) {
-				cout << items[i].message << '\n';
+				std::cout << items[i].message << '\n';
 			}
 		}
 	};
 	
-	vector<LogItem> allItems;
+	std::vector<LogItem> allItems;
 	
 	// API for writing logs
-	static void log(string message) {
+	static void log(std::string message) {
 		allItems.push_back({LOG, message});
 	}
-	static void debug(string message) {
+	static void debug(std::string message) {
 		allItems.push_back({DEBUG, message});
 	}
-	static void alert(string message) {
+	static void alert(std::string message) {
 		allItems.push_back({ALERT, message});
 	}
-	static void warn(string message) {
+	static void warn(std::string message) {
 		allItems.push_back({WARN, message});
 	}
-	static void error(string message) {
+	static void error(std::string message) {
 		allItems.push_back({ERROR, message});
 	}
-	static void fatal(string message) {
+	static void fatal(std::string message) {
 		allItems.push_back({FATAL, message});
 	}
 	
