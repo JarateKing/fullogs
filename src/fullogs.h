@@ -49,8 +49,8 @@ namespace Fullogs {
 	}
 	
 	// API for getting logs
-	static void getAllLogs() {
-		
+	static LogItemsResult getAllLogs() {
+		return {allItems};
 	}
 	static void getNewLogs() {
 		
