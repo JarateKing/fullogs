@@ -29,23 +29,23 @@ namespace Fullogs {
 	vector<LogItem> allItems;
 	
 	// API for writing logs
-	static void log() {
-		
+	static void log(string message) {
+		allItems.push_back({LOG, message});
 	}
-	static void debug() {
-		
+	static void debug(string message) {
+		allItems.push_back({DEBUG, message});
 	}
-	static void alert() {
-		
+	static void alert(string message) {
+		allItems.push_back({ALERT, message});
 	}
-	static void warn() {
-		
+	static void warn(string message) {
+		allItems.push_back({WARN, message});
 	}
-	static void error() {
-		
+	static void error(string message) {
+		allItems.push_back({ERROR, message});
 	}
-	static void fatal() {
-		
+	static void fatal(string message) {
+		allItems.push_back({FATAL, message});
 	}
 	
 	// API for getting logs
