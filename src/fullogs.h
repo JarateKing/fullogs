@@ -6,7 +6,8 @@
 #include <iomanip>
 
 // macros
-#define __FULLOGS_STR(a) #a
+#define __FULLOGS_STR(a) __FULLOGS_STR2(a)
+#define __FULLOGS_STR2(a) #a
 #define __FULLOGS_ARGS(a, b, c) {__FILE__, __FULLOGS_STR(__LINE__), __func__, __PRETTY_FUNCTION__, a, b, c}
 #define fullogs_log(a, b, c) Fullogs::log(__FULLOGS_ARGS(a, b, c));
 #define fullogs_debug(a, b, c) Fullogs::debug(__FULLOGS_ARGS(a, b, c));
