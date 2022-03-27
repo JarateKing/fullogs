@@ -64,6 +64,9 @@ namespace Fullogs {
 				std::cout << replaceFormat(format, items[i]);
 			}
 		}
+		void printToStdout() {
+			printToStdout("{message}\n");
+		}
 	};
 	
 	std::vector<LogItem> allItems;
