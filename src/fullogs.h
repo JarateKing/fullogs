@@ -5,6 +5,15 @@
 #include <sstream>
 #include <iomanip>
 
+// macros
+#define __FULLOGS_ARGS(a, b, c) {a, b, c}
+#define fullogs_log(a, b, c) Fullogs::log(__FULLOGS_ARGS(a, b, c));
+#define fullogs_debug(a, b, c) Fullogs::debug(__FULLOGS_ARGS(a, b, c));
+#define fullogs_alert(a, b, c) Fullogs::alert(__FULLOGS_ARGS(a, b, c));
+#define fullogs_warn(a, b, c) Fullogs::warn(__FULLOGS_ARGS(a, b, c));
+#define fullogs_error(a, b, c) Fullogs::error(__FULLOGS_ARGS(a, b, c));
+#define fullogs_fatal(a, b, c) Fullogs::fatal(__FULLOGS_ARGS(a, b, c));
+
 namespace Fullogs {
 	// levels
 	const int LOG = 1;
