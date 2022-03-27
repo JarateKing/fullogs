@@ -6,7 +6,8 @@
 #include <iomanip>
 
 // macros
-#define __FULLOGS_ARGS(a, b, c) {a, b, c}
+#define __FULLOGS_STR(a) #a
+#define __FULLOGS_ARGS(a, b, c) {__FILE__, __FULLOGS_STR(__LINE__), __func__, __PRETTY_FUNCTION__, a, b, c}
 #define fullogs_log(a, b, c) Fullogs::log(__FULLOGS_ARGS(a, b, c));
 #define fullogs_debug(a, b, c) Fullogs::debug(__FULLOGS_ARGS(a, b, c));
 #define fullogs_alert(a, b, c) Fullogs::alert(__FULLOGS_ARGS(a, b, c));
@@ -26,6 +27,10 @@ namespace Fullogs {
 	
 	// structs
 	struct LogArgument {
+		std::string file;
+		std::string line;
+		std::string function;
+		std::string prettyfunction;
 		std::string context;
 		std::string message;
 		std::string help;
@@ -39,6 +44,10 @@ namespace Fullogs {
 		std::string iso8601;
 		std::string day;
 		std::string month;
+		std::string file;
+		std::string line;
+		std::string function;
+		std::string prettyfunction;
 		
 		void writeTime(std::string& str, std::string format, time_t current_time) {
 			std::ostringstream ss;
@@ -59,6 +68,10 @@ namespace Fullogs {
 			context = arg.context;
 			message = arg.message;
 			help = arg.help;
+			file = arg.file;
+			line = arg.line;
+			function = arg.function;
+			prettyfunction = arg.prettyfunction;
 			
 			setupTime();
 		}
@@ -100,6 +113,10 @@ namespace Fullogs {
 			replaceAll(toret, "{day}", item.day.substr(0, 3));
 			replaceAll(toret, "{month}", item.month);
 			replaceAll(toret, "{mon}", item.month.substr(0, 3));
+			replaceAll(toret, "{file}", item.file);
+			replaceAll(toret, "{line}", item.line);
+			replaceAll(toret, "{func}", item.function);
+			replaceAll(toret, "{function}", item.prettyfunction);
 			return toret;
 		}
 		
