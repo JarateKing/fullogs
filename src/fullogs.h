@@ -28,14 +28,25 @@ namespace Fullogs {
 		std::string message;
 		std::string help;
 		std::string iso8601;
+		std::string yyyy, yy, mm, dd, HH, MM, SS;
+		
+		void writeTime(std::string& str, std::string format, time_t current_time) {
+			std::ostringstream ss;
+			ss << std::put_time(gmtime(&current_time), format.c_str());
+			str = ss.str();
+		}
 		
 		void setupTime() {
 			time_t current_time;
 			time(&current_time);
-			
-			std::ostringstream isoss;
-			isoss << std::put_time(gmtime(&current_time), "%Y-%m-%dT%H:%M:%SZ");
-			iso8601 = isoss.str();
+			writeTime(iso8601, "%Y-%m-%dT%H:%M:%SZ", current_time);
+			writeTime(yyyy, "%Y", current_time);
+			writeTime(yy, "%y", current_time);
+			writeTime(mm, "%m", current_time);
+			writeTime(dd, "%d", current_time);
+			writeTime(HH, "%H", current_time);
+			writeTime(MM, "%M", current_time);
+			writeTime(SS, "%S", current_time);
 		}
 		
 		LogItem(int level, LogArgument arg) {
@@ -72,8 +83,14 @@ namespace Fullogs {
 			replaceAll(toret, "{help}", item.help);
 			replaceAll(toret, "{level}", LEVELS.at(item.level));
 			replaceAll(toret, "{iso}", item.iso8601);
-			replaceAll(toret, "{utc}", item.iso8601);
 			replaceAll(toret, "{time}", item.iso8601);
+			replaceAll(toret, "{yyyy}", item.yyyy);
+			replaceAll(toret, "{yy}", item.yy);
+			replaceAll(toret, "{mm}", item.mm);
+			replaceAll(toret, "{dd}", item.dd);
+			replaceAll(toret, "{HH}", item.HH);
+			replaceAll(toret, "{MM}", item.MM);
+			replaceAll(toret, "{SS}", item.SS);
 			return toret;
 		}
 		
