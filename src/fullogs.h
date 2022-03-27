@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
 
 namespace Fullogs {
 	// levels
@@ -24,12 +27,24 @@ namespace Fullogs {
 		std::string context;
 		std::string message;
 		std::string help;
+		std::string iso8601;
+		
+		void setupTime() {
+			time_t current_time;
+			time(&current_time);
+			
+			std::ostringstream isoss;
+			isoss << std::put_time(gmtime(&current_time), "%Y-%m-%dT%H:%M:%SZ");
+			iso8601 = isoss.str();
+		}
 		
 		LogItem(int level, LogArgument arg) {
 			this->level = level;
 			context = arg.context;
 			message = arg.message;
 			help = arg.help;
+			
+			setupTime();
 		}
 	};
 	
@@ -56,6 +71,9 @@ namespace Fullogs {
 			replaceAll(toret, "{message}", item.message);
 			replaceAll(toret, "{help}", item.help);
 			replaceAll(toret, "{level}", LEVELS.at(item.level));
+			replaceAll(toret, "{iso}", item.iso8601);
+			replaceAll(toret, "{utc}", item.iso8601);
+			replaceAll(toret, "{time}", item.iso8601);
 			return toret;
 		}
 		
