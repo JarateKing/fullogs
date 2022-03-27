@@ -11,9 +11,24 @@ namespace Fullogs {
 	const int FATAL = 32;
 	
 	// structs
+	struct LogArgument {
+		std::string context;
+		std::string message;
+		std::string help;
+	};
+	
 	struct LogItem {
 		int level;
+		std::string context;
 		std::string message;
+		std::string help;
+		
+		LogItem(int level, LogArgument arg) {
+			this->level = level;
+			context = arg.context;
+			message = arg.message;
+			help = arg.help;
+		}
 	};
 	
 	struct LogItemsResult {
@@ -29,23 +44,23 @@ namespace Fullogs {
 	std::vector<LogItem> allItems;
 	
 	// API for writing logs
-	static void log(std::string message) {
-		allItems.push_back({LOG, message});
+	static void log(LogArgument arg) {
+		allItems.push_back(LogItem(LOG, arg));
 	}
-	static void debug(std::string message) {
-		allItems.push_back({DEBUG, message});
+	static void debug(LogArgument arg) {
+		allItems.push_back(LogItem(DEBUG, arg));
 	}
-	static void alert(std::string message) {
-		allItems.push_back({ALERT, message});
+	static void alert(LogArgument arg) {
+		allItems.push_back(LogItem(ALERT, arg));
 	}
-	static void warn(std::string message) {
-		allItems.push_back({WARN, message});
+	static void warn(LogArgument arg) {
+		allItems.push_back(LogItem(WARN, arg));
 	}
-	static void error(std::string message) {
-		allItems.push_back({ERROR, message});
+	static void error(LogArgument arg) {
+		allItems.push_back(LogItem(ERROR, arg));
 	}
-	static void fatal(std::string message) {
-		allItems.push_back({FATAL, message});
+	static void fatal(LogArgument arg) {
+		allItems.push_back(LogItem(FATAL, arg));
 	}
 	
 	// API for getting logs
