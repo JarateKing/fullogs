@@ -29,6 +29,7 @@ namespace Fullogs {
 		std::string help;
 		std::string iso8601;
 		std::string day;
+		std::string month;
 		
 		void writeTime(std::string& str, std::string format, time_t current_time) {
 			std::ostringstream ss;
@@ -41,6 +42,7 @@ namespace Fullogs {
 			time(&current_time);
 			writeTime(iso8601, "%Y-%m-%dT%H:%M:%SZ", current_time);
 			writeTime(day, "%A", current_time);
+			writeTime(month, "%B", current_time);
 		}
 		
 		LogItem(int level, LogArgument arg) {
@@ -87,6 +89,8 @@ namespace Fullogs {
 			replaceAll(toret, "{SS}", item.iso8601.substr(17, 2));
 			replaceAll(toret, "{dayname}", item.day);
 			replaceAll(toret, "{day}", item.day.substr(0, 3));
+			replaceAll(toret, "{month}", item.month);
+			replaceAll(toret, "{mon}", item.month.substr(0, 3));
 			return toret;
 		}
 		
