@@ -36,9 +36,32 @@ namespace Fullogs {
 	struct LogItemsResult {
 		std::vector<LogItem> items;
 		
-		void printToStdout() {
+		void replaceAll(std::string& text, std::string find, std::string replace) {
+			int pos = text.find(find);
+			while (pos != std::string::npos) {
+				text = text.replace(pos, find.length(), replace);
+				pos = text.find(find);
+			}
+		}
+		
+		std::string replaceFormat(std::string format, LogItem item) {
+			// TODO: optimize this
+			// - formatting can be cached
+			// - replacement can be done in one go
+			// TODO: improve behavior
+			// - cannot make `{message}` literal, for example
+			// - cannot have a replacement section include its own tag
+			std::string toret = format;
+			replaceAll(toret, "{context}", item.context);
+			replaceAll(toret, "{message}", item.message);
+			replaceAll(toret, "{help}", item.help);
+			replaceAll(toret, "{level}", LEVELS.at(item.level));
+			return toret;
+		}
+		
+		void printToStdout(std::string format) {
 			for (int i = 0; i < items.size(); i++) {
-				std::cout << items[i].message << '\n';
+				std::cout << replaceFormat(format, items[i]);
 			}
 		}
 	};
