@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 
 namespace Fullogs {
 	// levels
@@ -9,6 +10,7 @@ namespace Fullogs {
 	const int WARN = 8;
 	const int ERROR = 16;
 	const int FATAL = 32;
+	const std::map<int, std::string> LEVELS = {{LOG, "log"}, {DEBUG, "debug"}, {ALERT, "alert"}, {WARN, "warn"}, {ERROR, "error"}, {FATAL, "fatal"}};
 	
 	// structs
 	struct LogArgument {
