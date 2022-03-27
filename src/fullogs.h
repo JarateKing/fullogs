@@ -16,6 +16,10 @@
 #define fullogs_error(a, b, c) Fullogs::error(__FULLOGS_ARGS(a, b, c));
 #define fullogs_fatal(a, b, c) Fullogs::fatal(__FULLOGS_ARGS(a, b, c));
 
+#define fullogs_getAllLogs() Fullogs::getAllLogs()
+#define fullogs_getNewLogs() Fullogs::getNewLogs()
+#define fullogs_getLastNLogs() Fullogs::getLastNLogs()
+
 namespace Fullogs {
 	// levels
 	const int LOG = 1;
