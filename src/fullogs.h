@@ -8,13 +8,13 @@
 // macros
 #define __FULLOGS_STR(a) __FULLOGS_STR2(a)
 #define __FULLOGS_STR2(a) #a
-#define __FULLOGS_ARGS(a, b, c, d) {__FILE__, __FULLOGS_STR(__LINE__), __func__, __PRETTY_FUNCTION__, a, b, c, d}
-#define fullogs_log(a, b, c, d) Fullogs::log(__FULLOGS_ARGS(a, b, c, d));
-#define fullogs_debug(a, b, c, d) Fullogs::debug(__FULLOGS_ARGS(a, b, c, d));
-#define fullogs_alert(a, b, c, d) Fullogs::alert(__FULLOGS_ARGS(a, b, c, d));
-#define fullogs_warn(a, b, c, d) Fullogs::warn(__FULLOGS_ARGS(a, b, c, d));
-#define fullogs_error(a, b, c, d) Fullogs::error(__FULLOGS_ARGS(a, b, c, d));
-#define fullogs_fatal(a, b, c, d) Fullogs::fatal(__FULLOGS_ARGS(a, b, c, d));
+#define __FULLOGS_ARGS(a, b, c, ...) {__FILE__, __FULLOGS_STR(__LINE__), __func__, __PRETTY_FUNCTION__, a, b, c, __VA_ARGS__}
+#define fullogs_log(a, b, c, ...) Fullogs::log(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_debug(a, b, c, ...) Fullogs::debug(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_alert(a, b, c, ...) Fullogs::alert(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_warn(a, b, c, ...) Fullogs::warn(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_error(a, b, c, ...) Fullogs::error(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_fatal(a, b, c, ...) Fullogs::fatal(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
 
 #define fullogs_getAllLogs() Fullogs::getAllLogs()
 #define fullogs_getNewLogs() Fullogs::getNewLogs()
