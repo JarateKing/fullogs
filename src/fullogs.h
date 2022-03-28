@@ -79,6 +79,7 @@ namespace Fullogs {
 			line = arg.line;
 			function = arg.function;
 			prettyfunction = arg.prettyfunction;
+			tags = arg.tags;
 			
 			setupTime();
 		}
