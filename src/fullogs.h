@@ -44,6 +44,10 @@ namespace Fullogs {
 	
 	struct LogItem {
 		int level;
+		std::string file;
+		std::string line;
+		std::string function;
+		std::string prettyfunction;
 		std::string context;
 		std::string message;
 		std::string help;
@@ -52,10 +56,6 @@ namespace Fullogs {
 		std::string iso8601;
 		std::string day;
 		std::string month;
-		std::string file;
-		std::string line;
-		std::string function;
-		std::string prettyfunction;
 		
 		void writeTime(std::string& str, std::string format, time_t current_time) {
 			std::ostringstream ss;
