@@ -48,6 +48,7 @@ namespace Fullogs {
 		std::string message;
 		std::string help;
 		std::vector<std::string> tags;
+		std::string tagstring;
 		std::string iso8601;
 		std::string day;
 		std::string month;
@@ -70,6 +71,14 @@ namespace Fullogs {
 			writeTime(month, "%B", current_time);
 		}
 		
+		void setupTags() {
+			for (int i = 0; i < tags.size(); i++) {
+				tagstring += tags[i];
+				if (i != tags.size() - 1)
+					tagstring += ", ";
+			}
+		}
+		
 		LogItem(int level, LogArgument arg) {
 			this->level = level;
 			context = arg.context;
@@ -82,6 +91,7 @@ namespace Fullogs {
 			tags = arg.tags;
 			
 			setupTime();
+			setupTags();
 		}
 	};
 	
@@ -125,6 +135,7 @@ namespace Fullogs {
 			replaceAll(toret, "{line}", item.line);
 			replaceAll(toret, "{func}", item.function);
 			replaceAll(toret, "{function}", item.prettyfunction);
+			replaceAll(toret, "{tags}", item.tagstring);
 			return toret;
 		}
 		
