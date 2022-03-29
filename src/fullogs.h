@@ -195,26 +195,25 @@ namespace Fullogs {
 			this->flags = LOG | DEBUG | ALERT | WARN | ERROR | FATAL;
 		}
 		
+		bool passesFilter(LogItem item) {
+			if (item.level & flags) {
+				if (tags.size() == 0 || item.tags.size() == 0)
+					return true;
+					
+				for (int i = 0; i < tags.size(); i++)
+					for (int j = 0; j < item.tags.size(); j++)
+						if (tags[i] == item.tags[j])
+							return true;
+			}
+			
+			return false;
+		}
+		
 		LogItemsResult getAllLogs() {
 			std::vector<LogItem> toret;
-			for (auto e : allItems) {
-				if (e.level & flags) {
-					if (tags.size() == 0 || e.tags.size() == 0) {
-						toret.push_back(e);
-					}
-					else {
-						bool foundMatch = false;
-						for (int i = 0; i < tags.size(); i++) {
-							for (int j = 0; j < e.tags.size(); j++) {
-								if (tags[i] == e.tags[j])
-									foundMatch = true;
-							}
-						}
-						if (foundMatch)
-							toret.push_back(e);
-					}
-				}
-			}
+			for (auto e : allItems)
+				if (passesFilter(e))
+					toret.push_back(e);
 			
 			return {toret, format};
 		}
