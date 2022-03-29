@@ -218,8 +218,13 @@ namespace Fullogs {
 			return {toret, format};
 		}
 		LogItemsResult getNewLogs() {
-			// todo
-			return getAllLogs();
+			std::vector<LogItem> toret;
+			for (int i = newLogsIndex; i < allItems.size(); i++)
+				if (passesFilter(allItems[i]))
+					toret.push_back(allItems[i]);
+			
+			newLogsIndex = allItems.size();
+			return {toret, format};
 		}
 		LogItemsResult getLastNLogs() {
 			// todo
