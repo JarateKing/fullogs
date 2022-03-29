@@ -174,8 +174,14 @@ namespace Fullogs {
 	struct Logger {
 		std::string format;
 		int flags;
+		std::vector<std::string> tags;
 		int newLogsIndex = 0;
 		
+		Logger(std::string format, int flags, std::vector<std::string> tags) {
+			this->format = format;
+			this->flags = flags;
+			this->tags = tags;
+		}
 		Logger(std::string format, int flags) {
 			this->format = format;
 			this->flags = flags;
@@ -192,8 +198,22 @@ namespace Fullogs {
 		LogItemsResult getAllLogs() {
 			std::vector<LogItem> toret;
 			for (auto e : allItems) {
-				if (e.level & flags)
-					toret.push_back(e);
+				if (e.level & flags) {
+					if (tags.size() == 0 || e.tags.size() == 0) {
+						toret.push_back(e);
+					}
+					else {
+						bool foundMatch = false;
+						for (int i = 0; i < tags.size(); i++) {
+							for (int j = 0; j < e.tags.size(); j++) {
+								if (tags[i] == e.tags[j])
+									foundMatch = true;
+							}
+						}
+						if (foundMatch)
+							toret.push_back(e);
+					}
+				}
 			}
 			
 			return {toret, format};
