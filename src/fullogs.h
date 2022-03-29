@@ -173,17 +173,30 @@ namespace Fullogs {
 	// struct for getting logs
 	struct Logger {
 		std::string format;
+		int flags;
 		int newLogsIndex = 0;
 		
+		Logger(std::string format, int flags) {
+			this->format = format;
+			this->flags = flags;
+		}
 		Logger(std::string format) {
 			this->format = format;
+			this->flags = LOG | DEBUG | ALERT | WARN | ERROR | FATAL;
 		}
 		Logger() {
 			this->format = "{message}\n";
+			this->flags = LOG | DEBUG | ALERT | WARN | ERROR | FATAL;
 		}
 		
 		LogItemsResult getAllLogs() {
-			return {allItems, format};
+			std::vector<LogItem> toret;
+			for (auto e : allItems) {
+				if (e.level & flags)
+					toret.push_back(e);
+			}
+			
+			return {toret, format};
 		}
 		LogItemsResult getNewLogs() {
 			// todo
