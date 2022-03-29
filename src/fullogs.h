@@ -16,10 +16,6 @@
 #define fullogs_error(a, b, c, ...) Fullogs::error(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
 #define fullogs_fatal(a, b, c, ...) Fullogs::fatal(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
 
-#define fullogs_getAllLogs() Fullogs::getAllLogs()
-#define fullogs_getNewLogs() Fullogs::getNewLogs()
-#define fullogs_getLastNLogs() Fullogs::getLastNLogs()
-
 namespace Fullogs {
 	// levels
 	const int LOG = 1;
@@ -179,14 +175,21 @@ namespace Fullogs {
 		allItems.push_back(LogItem(FATAL, arg));
 	}
 	
-	// API for getting logs
-	static LogItemsResult getAllLogs() {
-		return {allItems};
-	}
-	static void getNewLogs() {
+	// struct for getting logs
+	struct Logger {
+		std::string format;
+		int newLogsIndex = 0;
 		
-	}
-	static void getLastNLogs() {
-		
-	}
+		LogItemsResult getAllLogs() {
+			return {allItems};
+		}
+		LogItemsResult getNewLogs() {
+			// todo
+			return getAllLogs();
+		}
+		LogItemsResult getLastNLogs() {
+			// todo
+			return getAllLogs();
+		}
+	};
 }
