@@ -93,6 +93,7 @@ namespace Fullogs {
 	
 	struct LogItemsResult {
 		std::vector<LogItem> items;
+		std::string format;
 		
 		void replaceAll(std::string& text, std::string find, std::string replace) {
 			int pos = text.find(find);
@@ -135,21 +136,15 @@ namespace Fullogs {
 			return toret;
 		}
 		
-		void printToStdout(std::string format) {
+		void printToStdout() {
 			for (int i = 0; i < items.size(); i++) {
 				std::cout << replaceFormat(format, items[i]);
 			}
 		}
-		void printToStdout() {
-			printToStdout("{message}\n");
-		}
-		void printToStderr(std::string format) {
+		void printToStderr() {
 			for (int i = 0; i < items.size(); i++) {
 				std::cerr << replaceFormat(format, items[i]);
 			}
-		}
-		void printToStderr() {
-			printToStderr("{message}\n");
 		}
 	};
 	
@@ -180,8 +175,15 @@ namespace Fullogs {
 		std::string format;
 		int newLogsIndex = 0;
 		
+		Logger(std::string format) {
+			this->format = format;
+		}
+		Logger() {
+			this->format = "{message}\n";
+		}
+		
 		LogItemsResult getAllLogs() {
-			return {allItems};
+			return {allItems, format};
 		}
 		LogItemsResult getNewLogs() {
 			// todo
