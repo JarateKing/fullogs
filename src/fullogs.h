@@ -4,6 +4,7 @@
 #include <ctime>
 #include <sstream>
 #include <iomanip>
+#include <stack>
 
 // macros
 #define __FULLOGS_STR(a) __FULLOGS_STR2(a)
@@ -226,9 +227,18 @@ namespace Fullogs {
 			newLogsIndex = allItems.size();
 			return {toret, format};
 		}
-		LogItemsResult getLastNLogs() {
-			// todo
-			return getAllLogs();
+		LogItemsResult getLastNLogs(int amount) {
+			std::stack<int> topop;
+			for (int i = allItems.size() - 1; i >= 0 && topop.size() < amount; i--)
+				if (passesFilter(allItems[i]))
+					topop.push(i);
+			
+			std::vector<LogItem> toret;
+			while (!topop.empty()) {
+				toret.push_back(allItems[topop.top()]);
+				topop.pop();
+			}
+			return {toret, format};
 		}
 	};
 }
