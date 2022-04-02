@@ -1,8 +1,8 @@
 #include "../src/fullogs.h"
 
 int main() {
-	Fullogs::Logger loggerOne("1 {message}\n");
-	Fullogs::Logger loggerTwo("2 {message}\n");
+	fullogs_logger loggerOne("1 {message}\n");
+	fullogs_logger loggerTwo("2 {message}\n");
 	
 	fullogs_listen({loggerOne.getNewLogs().printToStdout();});
 	fullogs_listen({loggerTwo.getNewLogs().printToStdout();});
