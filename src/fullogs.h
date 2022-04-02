@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iomanip>
 #include <stack>
+#include <functional>
 
 // macros
 #define __FULLOGS_STR(a) __FULLOGS_STR2(a)
@@ -150,25 +151,37 @@ namespace Fullogs {
 	};
 	
 	std::vector<LogItem> allItems;
+	std::vector<std::function<void(void)>> listeners;
+	
+	static void onItemAdded() {
+		for (int i = 0; i < listeners.size(); i++)
+			listeners[i]();
+	}
 	
 	// API for writing logs
 	static void log(LogArgument arg) {
 		allItems.push_back(LogItem(LOG, arg));
+		onItemAdded();
 	}
 	static void debug(LogArgument arg) {
 		allItems.push_back(LogItem(DEBUG, arg));
+		onItemAdded();
 	}
 	static void alert(LogArgument arg) {
 		allItems.push_back(LogItem(ALERT, arg));
+		onItemAdded();
 	}
 	static void warn(LogArgument arg) {
 		allItems.push_back(LogItem(WARN, arg));
+		onItemAdded();
 	}
 	static void error(LogArgument arg) {
 		allItems.push_back(LogItem(ERROR, arg));
+		onItemAdded();
 	}
 	static void fatal(LogArgument arg) {
 		allItems.push_back(LogItem(FATAL, arg));
+		onItemAdded();
 	}
 	
 	// struct for getting logs
@@ -241,4 +254,8 @@ namespace Fullogs {
 			return {toret, format};
 		}
 	};
+	
+	static void addToListener(std::function<void(void)> func) {
+		listeners.push_back(func);
+	}
 }
