@@ -17,6 +17,7 @@
 #define fullogs_warn(a, b, c, ...) Fullogs::warn(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
 #define fullogs_error(a, b, c, ...) Fullogs::error(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
 #define fullogs_fatal(a, b, c, ...) Fullogs::fatal(__FULLOGS_ARGS(a, b, c, __VA_ARGS__));
+#define fullogs_listen(a) Fullogs::addToListener([&]a);
 
 namespace Fullogs {
 	// levels
