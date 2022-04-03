@@ -55,3 +55,22 @@ Loggers' constructors include a few different parameters:
 * `std::string format`: how to format logs, see below for details
 * `int flags`: optional parameter for which levels to include. Defaults to all (log, debug, alert, warn, error, fatal). Can be manually set in a manner like `Fullogs::LOG | Fullogs::ERROR | Fullogs::FATAL`.
 * `std::vector<std::string> tags`: optional parameter which tags to limit this logger to. By default there are no tags, in which case nothing is filtered. Including tags means that *only* logs which include at least one of the tags are considered.
+
+The format string inserts different information into variables within the string. These are:
+
+* `{context}`: the context of the log
+* `{message}`: the message of the log
+* `{purpose}`: the purpose of the log
+* `{level}`: which level of the log lowercased, ie. `log`
+* `{iso}`, `{time}`: the iso8601 timestamp of the log
+* `{yyyy}`, `{yy}`, `{mm}`, `{dd}`: years, months, days of the timestamp
+* `{HH}`, `{MM}`, `{SS}`: hours, minutes, seconds of the timestamp
+* `{dayname}`: the full name of the day, ie. `Monday`
+* `{day}`: the shortened name of the day, ie. `Mon`
+* `{month}`: the full name of the month, ie. `January`
+* `{mon}`: the shortened name of the month, ie. `Jan`
+* `{file}`: the file that contains the log
+* `{line}`: the line that the log happened on
+* `{func}`: the function name that the log happened in, ie. `main`
+* `{function}`: the decorated function name that the log happened in, ie. `int main()`
+* `{tags}`: the list of tags included with this log, comma separated
