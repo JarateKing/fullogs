@@ -32,7 +32,7 @@ fullogs_listen({logger.getNewLogs().printToStdout();});
 
 ### Logging
 
-There are multiple different types of logs that can be made:
+There are multiple different levels of logs that can be made:
 
 * `fullogs_log`: A simple and generic log
 * `fullogs_debug`: A log used for debugging purposes
