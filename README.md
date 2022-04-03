@@ -74,3 +74,9 @@ The format string inserts different information into variables within the string
 * `{func}`: the function name that the log happened in, ie. `main`
 * `{function}`: the decorated function name that the log happened in, ie. `int main()`
 * `{tags}`: the list of tags included with this log, comma separated
+
+Loggers have a few different methods for getting logs:
+
+* `getNewLogs()` gets all the logs since the last time this method was called.
+* `getAllLogs()` gets every log
+* `getLastNLogs(int amount)` gets the most recent logs, up to `amount`
