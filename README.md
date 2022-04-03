@@ -3,7 +3,7 @@
 This is a header-only logging library for C++. The intention is to make some things explicit and encourage best practices by the developer, while also providing flexibility in its usage. Features include:
 
 * multiple levels: logs, debugs, alerts, warnings, errors, and fatal errors
-* logs split by intention -- context, message, and help -- to ensure that developers always think to describe all three
+* logs split by intention -- context, message, and purpose -- to ensure that developers always think to describe all three
 * multiple loggers operating on the same logs concurrently
 * flexibility between automatic or manual control over when loggers handle new logs
 
@@ -12,7 +12,7 @@ This is a header-only logging library for C++. The intention is to make some thi
 Including the header file via `#include "fullogs.h"` is all that's needed to begin using Fullogs. One can then log like so:
 
 ```cpp
-fullogs_log("Context", "Message", "Help");
+fullogs_log("Context", "Message", "Purpose");
 ```
 
 These logs are captured by loggers, which can either get logs after they've been run:
@@ -45,6 +45,6 @@ Each of the above logging methods takes in a few parameters:
 
 * `std::string context`: the information necessary to understand what the log is concerned with, or the background necessary to understand where the log is within the grand scheme of things
 * `std::string message`: the log itself
-* `std::string help`: a description of why the log exists and when applicable how to mitigate it
+* `std::string purpose`: a description of why the log exists and (when applicable, such as for errors) how to mitigate it
 * `std::vector<std::string> tags`: an optional parameter for what tags a log has. These can be used for categorization purposes, or to filter specific logs for different loggers.
 

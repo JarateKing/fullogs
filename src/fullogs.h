@@ -40,7 +40,7 @@ namespace Fullogs {
 		std::string prettyfunction;
 		std::string context;
 		std::string message;
-		std::string help;
+		std::string purpose;
 		std::vector<std::string> tags;
 	};
 	
@@ -52,7 +52,7 @@ namespace Fullogs {
 		std::string prettyfunction;
 		std::string context;
 		std::string message;
-		std::string help;
+		std::string purpose;
 		std::vector<std::string> tags;
 		std::string tagstring;
 		std::string iso8601;
@@ -85,7 +85,7 @@ namespace Fullogs {
 			this->level = level;
 			context = arg.context;
 			message = arg.message;
-			help = arg.help;
+			purpose = arg.purpose;
 			file = arg.file;
 			line = arg.line;
 			function = arg.function;
@@ -119,7 +119,7 @@ namespace Fullogs {
 			std::string toret = format;
 			replaceAll(toret, "{context}", item.context);
 			replaceAll(toret, "{message}", item.message);
-			replaceAll(toret, "{help}", item.help);
+			replaceAll(toret, "{purpose}", item.purpose);
 			replaceAll(toret, "{level}", LEVELS.at(item.level));
 			replaceAll(toret, "{iso}", item.iso8601);
 			replaceAll(toret, "{time}", item.iso8601);
