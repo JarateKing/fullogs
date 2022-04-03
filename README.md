@@ -29,3 +29,15 @@ Or alternatively, can be set up beforehand to listen for any new logs:
 fullogs_logger logger("{message}\n");
 fullogs_listen({logger.getNewLogs().printToStdout();});
 ```
+
+### Logging
+
+There are multiple different types of logs that can be made:
+
+* `fullogs_log`: A simple and generic log
+* `fullogs_debug`: A log used for debugging purposes
+* `fullogs_alert`: Something that users or developers should be aware of, but isn't necessarily a problem or cause for concern
+* `fullogs_warn`: Something that isn't strictly a problem by itself, but may be a problem or lead to problems
+* `fullogs_error`: Something wrong that's happened
+* `fullogs_fatal`: Something wrong that's happened that can't be recovered from
+
