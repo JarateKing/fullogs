@@ -48,3 +48,10 @@ Each of the above logging methods takes in a few parameters:
 * `std::string purpose`: a description of why the log exists and (when applicable, such as for errors) how to mitigate it
 * `std::vector<std::string> tags`: an optional parameter for what tags a log has. These can be used for categorization purposes, or to filter specific logs for different loggers.
 
+### Loggers
+
+Loggers' constructors include a few different parameters:
+
+* `std::string format`: how to format logs, see below for details
+* `int flags`: optional parameter for which levels to include. Defaults to all (log, debug, alert, warn, error, fatal). Can be manually set in a manner like `Fullogs::LOG | Fullogs::ERROR | Fullogs::FATAL`.
+* `std::vector<std::string> tags`: optional parameter which tags to limit this logger to. By default there are no tags, in which case nothing is filtered. Including tags means that *only* logs which include at least one of the tags are considered.
