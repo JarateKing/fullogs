@@ -41,3 +41,10 @@ There are multiple different types of logs that can be made:
 * `fullogs_error`: Something wrong that's happened
 * `fullogs_fatal`: Something wrong that's happened that can't be recovered from
 
+Each of the above logging methods takes in a few parameters:
+
+* `std::string context`: the information necessary to understand what the log is concerned with, or the background necessary to understand where the log is within the grand scheme of things
+* `std::string message`: the log itself
+* `std::string help`: a description of why the log exists and when applicable how to mitigate it
+* `std::vector<std::string> tags`: an optional parameter for what tags a log has. These can be used for categorization purposes, or to filter specific logs for different loggers.
+
