@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <stack>
 #include <functional>
+#include <fstream>
 
 // macros
 #define __FULLOGS_STR(a) __FULLOGS_STR2(a)
@@ -151,6 +152,18 @@ namespace Fullogs {
 			for (int i = 0; i < items.size(); i++) {
 				std::cerr << replaceFormat(format, items[i]);
 			}
+		}
+		
+		void printToFile(std::string filename, bool append) {
+			std::ofstream ofs;
+			std::ios_base::openmode flags = std::ofstream::out;
+			if (append)
+				flags |= std::ofstream::app;
+			ofs.open(filename, flags);
+			for (int i = 0; i < items.size(); i++) {
+				ofs << replaceFormat(format, items[i]);
+			}
+			ofs.close();
 		}
 	};
 	
