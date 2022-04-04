@@ -6,15 +6,15 @@ int main() {
 	fullogs_logger loggerTwo("Logger 2: {message}\n");
 	
 	// write logs within code, and print logs periodically
-	fullogs_log("Example Program", "Hello", "Initial Log", {"general"});
+	fullogs_log("Example Program", "Hello", "Showcasing logging");
 	loggerOne.getNewLogs().printToStdout();
 	loggerTwo.getNewLogs().printToStdout();
 	
-	fullogs_log("Example Program", "World!", "Second Log", {"general"});
+	fullogs_log("Example Program", "World!", "Showcasing logging");
 	loggerOne.getNewLogs().printToStdout();
 	loggerTwo.getNewLogs().printToStdout();
 	
-	fullogs_log("Example Program", "Yup!", "Third Log", {"general"});
+	fullogs_log("Example Program", "Yup!", "Showcasing logging");
 	loggerOne.getNewLogs().printToStdout();
 	loggerTwo.getNewLogs().printToStdout();
 	

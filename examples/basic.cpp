@@ -2,9 +2,9 @@
 
 int main() {
 	// write logs within code
-	fullogs_log("Example Program", "Hello", "Initial Log", {"general"});
-	fullogs_log("Example Program", "World!", "Second Log", {"general"});
-	fullogs_log("Example Program", "Yup!", "Third Log", {"general"});
+	fullogs_log("Example Program", "Hello", "Showcasing logging");
+	fullogs_log("Example Program", "World!", "Showcasing logging");
+	fullogs_log("Example Program", "Yup!", "Showcasing logging");
 	
 	// handle logs with a logger
 	fullogs_logger logger("{message}\n");
