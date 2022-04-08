@@ -171,6 +171,13 @@ namespace Fullogs {
 			}
 			return toret;
 		}
+		std::vector<std::string> getStringVector() {
+			std::vector<std::string> toret;
+			for (int i = 0; i < items.size(); i++) {
+				toret.push_back(replaceFormat(format, items[i]));
+			}
+			return toret;
+		}
 	};
 	
 	std::vector<LogItem> allItems;
