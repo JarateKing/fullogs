@@ -80,3 +80,11 @@ Loggers have a few different methods for getting logs:
 * `getNewLogs()` gets all the logs since the last time this method was called.
 * `getAllLogs()` gets every log
 * `getLastNLogs(int amount)` gets the most recent logs, up to `amount`
+
+After getting logs, there are multiple ways available to print them or obtain a different usable form:
+
+* `printToStdout()` directly logs to stdout
+* `printToStderr()` directly logs to stderr
+* `printToFile(std::string filename, bool append)` logs to a file, creating it if it doesn't exist. `append` determines whether or not logging should add to an existing file, or if it should replace its current contents
+* `getString()` converts the logs into a single string
+* `getStringVector()` converts the logs into a vector of strings
