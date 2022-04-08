@@ -1,0 +1,16 @@
+# Examples
+
+## Basic
+
+We can make simple use of fullogs like so:
+
+```cpp
+@@include ../examples/basic.cpp
+```
+
+This results in the following logs:
+
+```
+@@run "../examples/run.sh" "../examples/basic.cpp"
+@@output a.exe
+```
