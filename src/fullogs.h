@@ -153,7 +153,6 @@ namespace Fullogs {
 				std::cerr << replaceFormat(format, items[i]);
 			}
 		}
-		
 		void printToFile(std::string filename, bool append) {
 			std::ofstream ofs;
 			std::ios_base::openmode flags = std::ofstream::out;
@@ -164,6 +163,13 @@ namespace Fullogs {
 				ofs << replaceFormat(format, items[i]);
 			}
 			ofs.close();
+		}
+		std::string getString() {
+			std::string toret;
+			for (int i = 0; i < items.size(); i++) {
+				toret += replaceFormat(format, items[i]);
+			}
+			return toret;
 		}
 	};
 	
