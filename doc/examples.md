@@ -94,3 +94,32 @@ Logger 3: Hello
 Logger 3: World!
 Logger 3: Yup!
 ```
+
+### Levels
+
+There are multiple different 'levels' of logs available. These determine their severity, on a scale from completely benign to irrecoverably erroneous:
+
+```cpp
+#include "../src/fullogs.h"
+
+int main() {
+	// go through various levels
+	fullogs_log("Example Program", "logging!", "Showcasing logging");
+	fullogs_debug("Example Program", "debugging!", "Showcasing logging");
+	fullogs_alert("Example Program", "alerting!", "Showcasing logging");
+	fullogs_warn("Example Program", "warning!", "Showcasing logging");
+	fullogs_error("Example Program", "erroring!", "Showcasing logging");
+	fullogs_fatal("Example Program", "fatal erroring!", "Showcasing logging");
+	
+	fullogs_logger logger("{level}: {message}\n");
+	logger.getNewLogs().printToStdout();
+}```
+
+```
+log: logging!
+debug: debugging!
+alert: alerting!
+warn: warning!
+error: erroring!
+fatal: fatal erroring!
+```

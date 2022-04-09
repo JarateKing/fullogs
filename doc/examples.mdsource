@@ -40,3 +40,16 @@ You aren't limited to a single logger, and can create multiple. Each logger has 
 @@run "../examples/run.sh" "../examples/multiple_loggers.cpp"
 @@output a.exe
 ```
+
+### Levels
+
+There are multiple different 'levels' of logs available. These determine their severity, on a scale from completely benign to irrecoverably erroneous:
+
+```cpp
+@@include ../examples/levels.cpp
+```
+
+```
+@@run "../examples/run.sh" "../examples/levels.cpp"
+@@output a.exe
+```
