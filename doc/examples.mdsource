@@ -14,3 +14,16 @@ This results in the following logs:
 @@run "../examples/run.sh" "../examples/basic.cpp"
 @@output a.exe
 ```
+
+## Listener
+
+Alternatively, we can make use of a listener:
+
+```cpp
+@@include ../examples/listener.cpp
+```
+
+```
+@@run "../examples/run.sh" "../examples/listener.cpp"
+@@output a.exe
+```
