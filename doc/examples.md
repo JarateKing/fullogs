@@ -123,3 +123,27 @@ warn: warning!
 error: erroring!
 fatal: fatal erroring!
 ```
+
+### Print to File
+
+So far the examples have all used `printToStdout`. Other methods are available, such as `printToFile`:
+
+```cpp
+#include "../src/fullogs.h"
+
+int main() {
+	// write logs within code
+	fullogs_log("Example Program", "Hello", "Showcasing logging");
+	fullogs_log("Example Program", "World!", "Showcasing logging");
+	fullogs_log("Example Program", "Yup!", "Showcasing logging");
+	
+	// handle logs with a logger
+	fullogs_logger logger("{time}: {message}\n");
+	logger.getNewLogs().printToFile("output.log", true);
+}```
+
+```
+2022-01-02T03:04:05Z: Hello
+2022-01-02T03:04:05Z: World!
+2022-01-02T03:04:05Z: Yup!
+```

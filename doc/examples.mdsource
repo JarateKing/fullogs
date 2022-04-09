@@ -53,3 +53,16 @@ There are multiple different 'levels' of logs available. These determine their s
 @@run "../examples/run.sh" "../examples/levels.cpp"
 @@output a.exe
 ```
+
+### Print to File
+
+So far the examples have all used `printToStdout`. Other methods are available, such as `printToFile`:
+
+```cpp
+@@include ../examples/print_to_file.cpp
+```
+
+```
+@@run "../examples/run.sh" "../examples/print_to_file.cpp"
+@@include output.log
+```
