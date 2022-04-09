@@ -27,3 +27,16 @@ Alternatively, we can make use of a listener:
 @@run "../examples/run.sh" "../examples/listener.cpp"
 @@output a.exe
 ```
+
+## Multiple Loggers
+
+You aren't limited to a single logger, and can create multiple. Each logger has access to the same logs (as long as they're not filtered out) and can handle their own formatting.
+
+```cpp
+@@include ../examples/multiple_loggers.cpp
+```
+
+```
+@@run "../examples/run.sh" "../examples/multiple_loggers.cpp"
+@@output a.exe
+```
