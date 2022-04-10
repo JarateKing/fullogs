@@ -16,7 +16,8 @@ int main() {
 	// handle logs with a logger
 	fullogs_logger logger("{message}\n");
 	logger.getNewLogs().printToStdout();
-}```
+}
+```
 
 This results in the following logs:
 
@@ -44,7 +45,8 @@ int main() {
 	fullogs_log("Example Program", "Hello", "Showcasing logging");
 	fullogs_log("Example Program", "World!", "Showcasing logging");
 	fullogs_log("Example Program", "Yup!", "Showcasing logging");
-}```
+}
+```
 
 ```
 Hello
@@ -113,7 +115,8 @@ int main() {
 	
 	fullogs_logger logger("{level}: {message}\n");
 	logger.getNewLogs().printToStdout();
-}```
+}
+```
 
 ```
 log: logging!
@@ -140,7 +143,8 @@ int main() {
 	// handle logs with a logger
 	fullogs_logger logger("{time}: {message}\n");
 	logger.getNewLogs().printToFile("output.log", true);
-}```
+}
+```
 
 ```
 2022-01-02T03:04:05Z: Hello
